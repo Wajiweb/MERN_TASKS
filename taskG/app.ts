@@ -1,0 +1,26 @@
+import {Product} from './product.js';
+import * as cartModule from "./cart.js";
+import * as utilModule from "./utility.js";
+
+const laptop = new Product(1, 'Laptop', 50000, 'Electronics');
+const phone = new Product(2, 'Phone', 20000, 'Electronics');
+const desk = new Product(3, 'Desk', 15000, 'Furniture');
+
+let cart:Product[] = [];
+cart =cartModule.addtocart(cart, laptop);
+cart = cartModule.addtocart(cart, phone);
+cart =cartModule.addtocart(cart, desk);
+cart =cartModule.removefromcart(cart, 2);
+ 
+let backupCart: Product[] = utilModule.deepcloneCart(cart);
+backupCart[0].price = 5000;
+console.log(`Original laptop price:RS ${cart[0].price}`);
+
+console.log("catagories:",utilModule.getUniqueCategories(cart));
+console.log("grouped by catagories:",utilModule.groupByCategory(cart));
+
+const discountedPrice = Product.applyDiscount(laptop.price, 0.1);
+console.log(`Discounted price of laptop: RS ${discountedPrice}`);
+console.log(cartModule.summary(cart));
+
+
