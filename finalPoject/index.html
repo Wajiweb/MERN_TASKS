@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="E-Commerce Inventory Auditor — A browser-based tool for managing and auditing product inventory with real-time insights." />
+  <title>Inventory Auditor — E-Commerce Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-group">
+        <span class="logo-icon">Stats</span>
+        <div>
+          <h1 class="app-title">Inventory Auditor</h1>
+          <p class="app-subtitle">E-Commerce Dashboard</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" id="run-audit-btn">
+          <span class="btn-icon">Search</span> Run Full Audit
+        </button>
+        <button class="btn btn-secondary" id="export-btn">
+          <span class="btn-icon">Export</span> Export JSON
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <section class="section" id="stats-section">
+      <h2 class="section-title"> Dashboard Overview</h2>
+      <div class="stats-grid" id="stats-dashboard">
+      </div>
+
+      <div class="insights-row">
+        <div class="insight-card">
+          <h3 class="insight-title"> Top Sellers</h3>
+          <div id="top-sellers">
+          </div>
+        </div>
+        <div class="insight-card">
+          <h3 class="insight-title"> Categories</h3>
+          <div id="category-breakdown">
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="controls-bar">
+      <div class="search-group">
+        <span class="search-icon">Search</span>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search products by name, SKU, or supplier..."
+          autocomplete="off"
+        />
+      </div>
+      <select id="category-filter" class="category-select">
+        <option value="">All Categories</option>
+      </select>
+      <div class="bulk-controls">
+        <button class="btn btn-outline" id="select-all-btn">Select All</button>
+        <button class="btn btn-accent" id="bulk-edit-btn">
+          <span class="btn-icon">Edit</span> Bulk Edit
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-header">
+        <h2 class="section-title"> Product Inventory</h2>
+        <span class="load-status" id="load-status">Loading...</span>
+      </div>
+      <div class="grid-container" id="grid-container">
+        <div class="product-grid" id="product-grid">
+ 
+        </div>
+      </div>
+    </section>
+    <section class="section audit-section" id="audit-panel">
+    </section>
+
+  </main>
+  <div class="modal-overlay" id="bulk-edit-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3> Bulk Edit Products</h3>
+        <button class="modal-close" id="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="selected-products" id="selected-products-list">
+        </div>
+        <form id="bulk-edit-form" class="edit-form">
+          <div class="form-group">
+            <label for="edit-price" class="form-label">New Price ($)</label>
+            <input
+              type="number"
+              id="edit-price"
+              class="form-input"
+              step="0.01"
+              min="0"
+              placeholder="Leave empty to keep current"
+            />
+          </div>
+          <div class="form-group">
+            <label for="edit-stock" class="form-label">New Stock (units)</label>
+            <input
+              type="number"
+              id="edit-stock"
+              class="form-input"
+              min="0"
+              placeholder="Leave empty to keep current"
+            />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="cancel-edit-btn" onclick="document.getElementById('bulk-edit-modal').classList.remove('visible')">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <span class="btn-icon">Save</span> Apply Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="app-footer">
+    <p>Inventory Auditor &copy; 2026 — Final Internship Project</p>
+  </footer>
+  <script type="module" src="./dist/app.js"></script>
+</body>
+</html>
