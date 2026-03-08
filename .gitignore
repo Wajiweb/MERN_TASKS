@@ -1,1 +1,10 @@
 node_modules/
+# Remove node_modules from Git tracking
+git rm -r --cached node_modules
+
+# Commit the change
+git commit -m "Remove node_modules from repository"
+
+# Push to GitHub
+git push origin main
+
