@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Validator SPA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Tracker Pro</h1>
+           
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Add New Task</h2>
+                <form id="task-form">
+                    <div class="input-group">
+                        <label for="task-name">Task Description</label>
+                        <input type="text" id="task-name" placeholder="e.g., Finish DOM Task">
+                        <small class="error-message" id="name-error"></small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="user-email">Assignee Email (Live Validation)</label>
+                        <input type="email" id="user-email" placeholder="ali@example.com">
+                        <small class="error-message" id="email-error"></small>
+                    </div>
+
+                    <button type="submit" id="submit-btn">Add Task</button>
+                </form>
+            </section>
+
+            <section class="list-section">
+                <h2>Active Tasks</h2>
+                <ul id="task-list">
+                    </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
